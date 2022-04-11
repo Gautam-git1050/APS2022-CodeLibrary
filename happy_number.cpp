@@ -1,7 +1,6 @@
 /* A happy number is a number whose sum of digits is calculated until the sum is a single digit,
   and this sum turns out to be 1 */
 
-// Copyright 2019 TheAlgorithms contributors
 
 #include <iostream>
 
