@@ -1,11 +1,9 @@
 #include <iostream>
 using namespace std;
-///N=9;
 int n = 9;
 
 bool isPossible(int mat[][9], int i, int j, int no)
 {
-    ///Row or col nahin hona chahiye
     for (int x = 0; x < n; x++)
     {
         if (mat[x][j] == no || mat[i][x] == no)
@@ -14,7 +12,6 @@ bool isPossible(int mat[][9], int i, int j, int no)
         }
     }
 
-    /// Subgrid mein nahi hona chahiye
     int sx = (i / 3) * 3;
     int sy = (j / 3) * 3;
 
@@ -54,43 +51,34 @@ void printMat(int mat[][9])
 
 bool solveSudoku(int mat[][9], int i, int j)
 {
-    ///Base Case
     if (i == 9)
     {
-        ///Solve kr chuke hain for 9 rows already
         printMat(mat);
         return true;
     }
 
-    ///Crossed the last  Cell in the row
     if (j == 9)
     {
         return solveSudoku(mat, i + 1, 0);
     }
 
-    ///Blue Cell - Skip
     if (mat[i][j] != 0)
     {
         return solveSudoku(mat, i, j + 1);
     }
-    ///White Cell
-    ///Try to place every possible no
     for (int no = 1; no <= 9; no++)
     {
         if (isPossible(mat, i, j, no))
         {
-            ///Place the no - assuming solution aa jayega
             mat[i][j] = no;
             bool aageKiSolveHui = solveSudoku(mat, i, j + 1);
             if (aageKiSolveHui)
             {
                 return true;
             }
-            ///Nahin solve hui
-            ///loop will place the next no.
+            
         }
     }
-    ///Sare no try kr liey, kisi se bhi solve nahi hui
     mat[i][j] = 0;
     return false;
 }
