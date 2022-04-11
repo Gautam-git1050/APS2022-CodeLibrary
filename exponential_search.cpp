@@ -1,14 +1,8 @@
-// Copyright 2020 Divide-et-impera-11
 #include <assert.h>
 #include <iostream>
 #include <string>
 using namespaces std;
-// Binary Search Algorithm(use by struzik algorithm)
-// Time Complexity O(log n) where 'n' is the number of elements
-// Worst Time Complexity O(log n)
-// Best Time Complexity Ω(1)
-// Space Complexity O(1)
-// Auxiliary Space Complexity O(1)
+
 template<class Type> inline Type* binary_s(Type *array, size_t size, Type key) {
 int32_t lower_index(0), upper_index(size - 1), middle_index;
 while (lower_index <= upper_index) {
@@ -19,19 +13,6 @@ while (lower_index <= upper_index) {
      }
 return nullptr;
 }
-// Struzik Search Algorithm(Exponential)
-// Time Complexity O(log i)where i is the position of search key in the list
-// Worst Time Complexity O(log i)
-// Best Time Complexity Ω(1)
-// Space Complexity O(1)
-// Auxiliary Space Complexity O(1)
-/* Tha algorithm try to search the range where the key should be.
-If it has been found we do a binary search there.
-The range of the search grows by exponential every time.
-If the key is larger than the last element of array,
-the start of block(block_front) will be equal to the end of block(block_size)
-and the algorithm return null ponter,
-every other cases the algoritm return fom the loop. */
 template<class Type> Type* struzik_search(Type* array, size_t size, Type key) {
   uint32_t block_front(0), block_size = size == 0 ? 0 : 1;
   while (block_front != block_size) {
